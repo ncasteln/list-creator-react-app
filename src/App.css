@@ -1,38 +1,128 @@
 .App {
-  text-align: center;
+  height: 100vh;
+  display: flex;
+  flex-flow: column;
+  position: relative;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+header {
+  width: 100%;
+  display: flex;
+  align-items: baseline;
+}
+h1, h2 {
+  margin: 12px 9px;
+}
+h1 {
+  margin-right: auto;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.ListSection {
+
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* --------- COMLETE SINGLE LIST --------- */
+article {
+  display: flex;
+  flex-wrap: wrap;
+}
+.topic-box {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(226, 206, 228);
+}
+.topic-title {
+
+}
+.EditForm {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+}
+input {
+  padding: 6px;
+  border-radius: 3px;
+  border: none;
+}
+.EditForm > div {
+  display: flex;
+  justify-content: flex-end;
+}
+button {
+  color:rgb(247, 247, 247);
+  border: none;
+  border-radius: 3px;
+  background-color: rgb(255, 100, 38);
+  padding: 6px;
 }
 
-.App-link {
-  color: #61dafb;
+/* --------- ITEM BOX --------- */
+.item-box {
+  width: 100%;
+  margin: 0 0 0 18px;
+  padding: 18px;
+}
+.item {
+  display: flex;
+  /* flex-wrap: wrap; */
+  margin-bottom: 6px;
+}
+li {
+  flex-shrink: 1;
+  flex-basis: 50%;
+  margin-right: auto;
+}
+.item-buttons {
+  display: flex;
+  height: 21px;
+}
+.markToggle {
+  color: grey;
+  text-decoration: line-through;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* --------- MODAL FORM --------- */
+.activate-form-button {
+  position: fixed;
+  width: 50px;
+  height: 50px;
+  margin: 0 auto;
+  bottom: 10px;
+  right: 10px;
+  border: none;
+  border-radius: 100%;
+  font-size: 2rem;
+  color:rgb(247, 247, 247); 
+}
+
+.ModalForm {
+  width: 80%;
+  height: 80%;
+  z-index: 1;
+  position: absolute;
+  margin: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(247, 247, 247);
+  box-shadow: 3px 3px 12px gray;
+  padding: 18px;
+}
+.ModalForm > div {
+  display: flex;
+  flex-direction: column;
+}
+.modal-input, .modal-label {
+  margin: 6px 0;
+}
+.add-field-button {
+
+}
+.create-list-button {
+  margin-top: auto;
+  align-self: flex-end;
 }
