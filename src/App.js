@@ -31,13 +31,14 @@ const App = () => {
         delete stateCopy[action.listIndex].items[action.itemName];
         return stateCopy;
       case actions.NEW_LIST:
-        console.log(action.list)
-        console.log(Object.entries(action.list))
-
+        const items = Object.values(action.list)
+          .filter((item, i) => i > 0)
+          .reduce((accumulator, item) => {
+            return {...accumulator, [item]: false}
+        }, {});
         stateCopy.push({
           topic: action.list.topic,
-          items: {'a': false, 'b': false} // EXTRACT THE ITEMS FROM THE LIST OBJECT! or modify the 
-          // method which update the state in ModealForm
+          items
         })
         return stateCopy;        
       default:

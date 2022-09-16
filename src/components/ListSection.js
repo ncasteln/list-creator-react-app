@@ -2,7 +2,6 @@ import EditForm from './EditForm';
 import React, { useContext, useState } from 'react';
 import { FaTasks, FaTimes } from 'react-icons/fa';
 import DispatchContext from "./DispatchContext";
-import ModalForm from './ModalForm';
 
 const ListSection = ({ lists }) => {
   const dispatch = useContext(DispatchContext)
