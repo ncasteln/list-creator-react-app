@@ -2,6 +2,7 @@ import EditForm from './EditForm';
 import React, { useContext, useState } from 'react';
 import { FaTasks, FaTimes } from 'react-icons/fa';
 import DispatchContext from "./DispatchContext";
+import ModalForm from './ModalForm';
 
 const ListSection = ({ lists }) => {
   const dispatch = useContext(DispatchContext)
@@ -16,22 +17,33 @@ const ListSection = ({ lists }) => {
         itemName
       })
     }
+    if (type === 'REMOVE_ITEM') {
+      dispatch({
+        type,
+        listIndex,
+        itemName
+      })
+    }
   }
 
   const displayItems = (itemsObject, listIndex) => {
+    if (Object.keys(itemsObject).length === 0) {
+      return <small><em>The List is empty!</em></small>
+    }
     return Object.entries(itemsObject).map((item, itemIndex) => {
+      const [itemName, isDone] = item;
       return (
-        <div className='item'>
-          <li className={item[1] ? 'markToggle' : null}>
-            {item[0]}
+        <div key={`item_${itemIndex}`} className='item'>
+          <li className={isDone ? 'markToggle' : null}>
+            {itemName}
           </li>
-          <div className='item-buttons'>
+          <div className='item-button-box'>
             <button
-              onClick={() => handleClick('MARK_TOGGLE', listIndex, item[0])}>
+              onClick={() => handleClick('MARK_TOGGLE', listIndex, itemName)}>
               <FaTasks color='white' />
             </button>
             <button
-              onClick={() => handleClick('REMOVE_ITEM')}>
+              onClick={() => handleClick('REMOVE_ITEM', listIndex, itemName)}>
               <FaTimes color='white' />
             </button>
           </div>
@@ -41,6 +53,16 @@ const ListSection = ({ lists }) => {
   }
 
   const displayTopics = (lists) => {
+    if (lists.length === 0) {
+      return (
+        <div>
+          <h4><em>
+            There is no list! <br />
+            Begin to create one by clicking on the orange button on the bottom!
+          </em></h4>
+        </div>
+      ) 
+    }
     return lists.map((el, listIndex) => {
       return (
         <article key={`article_${listIndex}`}>

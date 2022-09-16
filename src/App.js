@@ -11,7 +11,8 @@ const App = () => {
     ADD_ITEM: 'ADD_ITEM',
     REMOVE_LIST: 'REMOVE_LIST',
     MARK_TOGGLE: 'MARK_TOGGLE',
-    REMOVE_ITEM: 'REMOVE_ITEM' 
+    REMOVE_ITEM: 'REMOVE_ITEM',
+    NEW_LIST: 'NEW_LIST'
   }
 
   function reducer(prevState, action) {
@@ -27,7 +28,18 @@ const App = () => {
         stateCopy[action.listIndex].items[action.itemName] = !stateCopy[action.listIndex].items[action.itemName];
         return stateCopy;
       case actions.REMOVE_ITEM:
+        delete stateCopy[action.listIndex].items[action.itemName];
         return stateCopy;
+      case actions.NEW_LIST:
+        console.log(action.list)
+        console.log(Object.entries(action.list))
+
+        stateCopy.push({
+          topic: action.list.topic,
+          items: {'a': false, 'b': false} // EXTRACT THE ITEMS FROM THE LIST OBJECT! or modify the 
+          // method which update the state in ModealForm
+        })
+        return stateCopy;        
       default:
         throw new Error('reducer() function failed');
     }
@@ -46,12 +58,12 @@ const App = () => {
         <DispatchContext.Provider value={dispatch}>
           <ListSection 
             lists={lists} />
-        </DispatchContext.Provider>
         {
           isFormActive 
-            ? <ModalForm />
-            : null
+          ? <ModalForm />
+          : null
         }
+        </DispatchContext.Provider>
         <button className='activate-form-button' 
           onClick={() => setIsFormActive(!isFormActive)}> + </button>
       </main>

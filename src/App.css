@@ -1,14 +1,27 @@
+:root {
+  --black: rgb(32, 26, 32);
+  --violet: rgb(127, 64, 133);
+  --violet-light: rgb(226, 206, 228);
+  --white: rgb(247, 247, 247);
+  --orange: rgb(255, 100, 38);
+  --orange-light: #ff8250;
+}
+
 .App {
   height: 100vh;
   display: flex;
   flex-flow: column;
   position: relative;
+  color: var(--black);
+  background-color: var(--violet);
 }
 
 header {
   width: 100%;
   display: flex;
   align-items: baseline;
+  color: var(--white);
+  background-color: var(--violet);
 }
 h1, h2 {
   margin: 12px 9px;
@@ -16,46 +29,66 @@ h1, h2 {
 h1 {
   margin-right: auto;
 }
-
-.ListSection {
-
+h2 {
+  color:var(--violet-light)
+}
+h4 {
+  text-align: center;
+  font-weight: 400;
+  padding: 36px;
+  background-color: var(--violet-light);
 }
 
-/* --------- COMLETE SINGLE LIST --------- */
+
+/* --------- COMPLETE SINGLE LIST --------- */
+.ListSection {
+  padding: 9px;
+  height: 100%;
+}
 article {
   display: flex;
   flex-wrap: wrap;
+  background-color: var(--white);
+  margin-bottom: 12px;
 }
 .topic-box {
   width: 100%;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: rgb(226, 206, 228);
+  flex-flow: column;
+  background-color: var(--violet-light);
+  padding: 12px 18px;
 }
 .topic-title {
-
+  margin-bottom: 6px;
 }
 .EditForm {
+  width: 100%;
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
 }
 input {
   padding: 6px;
   border-radius: 3px;
   border: none;
 }
-.EditForm > div {
+.edit-form-buttons-box {
   display: flex;
-  justify-content: flex-end;
+  gap: 6px;
+  height: 24px;
 }
 button {
-  color:rgb(247, 247, 247);
+  width: 36px;
   border: none;
   border-radius: 3px;
-  background-color: rgb(255, 100, 38);
+  cursor: pointer;
   padding: 6px;
+  color:var(--white);
+  background-color: var(--orange);
 }
+button:hover {
+  background-color: var(--orange-light);
+}
+
 
 /* --------- ITEM BOX --------- */
 .item-box {
@@ -73,9 +106,14 @@ li {
   flex-basis: 50%;
   margin-right: auto;
 }
-.item-buttons {
+.item-button-box {
   display: flex;
-  height: 21px;
+  gap: 6px;
+  height: 24px;
+}
+.item-button-box > button {
+  text-align: center;
+  vertical-align: middle;
 }
 .markToggle {
   color: grey;
@@ -93,10 +131,9 @@ li {
   border: none;
   border-radius: 100%;
   font-size: 2rem;
-  color:rgb(247, 247, 247); 
+  color:var(--white); 
 }
-
-.ModalForm {
+.Modal {
   width: 80%;
   height: 80%;
   z-index: 1;
@@ -108,21 +145,41 @@ li {
   left: 0;
   display: flex;
   flex-direction: column;
-  background-color: rgb(247, 247, 247);
+  justify-content: space-between;
   box-shadow: 3px 3px 12px gray;
   padding: 18px;
+  background-color: var(--white);
 }
-.ModalForm > div {
+.modal-form-box {
   display: flex;
   flex-direction: column;
+  height: 80%;
+  overflow-y: scroll;
 }
 .modal-input, .modal-label {
   margin: 6px 0;
 }
-.add-field-button {
-
+.modal-form-buttons {
+  display: flex;
+  justify-content: space-between;
 }
-.create-list-button {
-  margin-top: auto;
-  align-self: flex-end;
+.add-field-button, .create-list-button {
+  padding: 6px 12px;
+  width: auto;
+}
+
+
+/* --------- MODAL CONFIRM MESSAGE --------- */
+.Modal.Message {
+  height: fit-content;
+  align-items: center;
+  gap: 12px;
+}
+.Modal.Message > div {  
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+.confirm-button {
+  width: 30%;
 }
