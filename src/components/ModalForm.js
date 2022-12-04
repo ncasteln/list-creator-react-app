@@ -1,18 +1,23 @@
 import React, { useContext, useState } from "react";
 import DispatchContext from "./DispatchContext";
+import { FaTimes } from 'react-icons/fa';
 
-const ModalForm = () => {
+const ModalForm = ({ setIsFormActive }) => {
   const dispatch = useContext(DispatchContext);
 
   const [fields, setFields] = useState(1);
-  const [list, setList] = useState({})
+  const [list, setList] = useState({ 
+    topic: '',
+    'item_0': ''
+  })
 
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch({
       type: 'NEW_LIST',
       list
-    })
+    });
+    setIsFormActive(false);
   }
 
   const handleChange = (e) => {
@@ -26,7 +31,8 @@ const ModalForm = () => {
     const inputFields = [];
     for (let i = 1; i < fields; i++) {
       inputFields.push(
-        <input className='modal-input'
+        <input key={`inputField_${i}`} 
+          className='modal-input'
           name={`item_${i}`}
           value={list[`item_${i}`]}
           type='text'
@@ -38,7 +44,10 @@ const ModalForm = () => {
   }
 
   return (
-    <form onSubmit={(e) => handleSubmit(e)} className="Modal Form">
+    <form onSubmit={handleSubmit} className="Modal Form">
+      <button className='close-form' onClick={() => setIsFormActive(false)}>
+        <FaTimes color='white' />
+      </button>
       <div className='modal-form-box'>
         <label className='modal-label'>Title:</label>
         <input className='modal-input'
@@ -57,7 +66,8 @@ const ModalForm = () => {
         {displayInputFields()}
       </div>
 
-      {Object.values(list).map(item => <p>{item}</p>)}
+      {/* Only input check pourpose */}
+      {/* {Object.values(list).map((item, i) => <p key={`item_${i}`}>{item}</p>)} */}
 
       <div className="modal-form-buttons">
         <button className='add-field-button' 
@@ -65,8 +75,11 @@ const ModalForm = () => {
           onClick={() => setFields(prevFields => prevFields + 1)}>
             Add input field
         </button>
-        <button className='create-list-button'
-          type="submit">Create List!</button>
+        <button
+          className='create-list-button'
+          type="submit">
+            Create List!
+        </button>
       </div>
     </form>
   )

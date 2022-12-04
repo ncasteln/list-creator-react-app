@@ -1,0 +1,15 @@
+const actions = {
+  ADD_ITEM: 'ADD_ITEM',
+  REMOVE_LIST: 'REMOVE_LIST',
+  MARK_TOGGLE: 'MARK_TOGGLE',
+  REMOVE_ITEM: 'REMOVE_ITEM',
+  NEW_LIST: 'NEW_LIST'
+};
+
+export const {
+  ADD_ITEM,
+  REMOVE_LIST,
+  MARK_TOGGLE,
+  REMOVE_ITEM,
+  NEW_LIST
+} = actions;

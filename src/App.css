@@ -6,8 +6,8 @@
   --orange: rgb(255, 100, 38);
   --orange-light: #ff8250;
 }
-
 .App {
+  max-width: 600px;
   height: 100vh;
   display: flex;
   flex-flow: column;
@@ -15,7 +15,6 @@
   color: var(--black);
   background-color: var(--violet);
 }
-
 header {
   width: 100%;
   display: flex;
@@ -40,16 +39,18 @@ h4 {
 }
 
 
-/* --------- COMPLETE SINGLE LIST --------- */
-.ListSection {
+/* --------- LIST BOX --------- */
+main {
   padding: 9px;
   height: 100%;
 }
-article {
+.list-box {
+  max-width: 500px;
   display: flex;
   flex-wrap: wrap;
-  background-color: var(--white);
   margin-bottom: 12px;
+  background-color: var(--white);
+  cursor: pointer;
 }
 .topic-box {
   width: 100%;
@@ -61,7 +62,7 @@ article {
 .topic-title {
   margin-bottom: 6px;
 }
-.EditForm {
+.EditList {
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -90,21 +91,19 @@ button:hover {
 }
 
 
-/* --------- ITEM BOX --------- */
-.item-box {
+/* --------- LIST --------- */
+.list {
   width: 100%;
-  margin: 0 0 0 18px;
+  margin-left: 18px;
   padding: 18px;
 }
 .item {
-  display: flex;
-  /* flex-wrap: wrap; */
   margin-bottom: 6px;
+  display: flex;
+  justify-content: space-between;
 }
-li {
-  flex-shrink: 1;
-  flex-basis: 50%;
-  margin-right: auto;
+.item-name {
+  max-width: 300px;
 }
 .item-button-box {
   display: flex;
@@ -116,7 +115,7 @@ li {
   vertical-align: middle;
 }
 .markToggle {
-  color: grey;
+  color: gray;
   text-decoration: line-through;
 }
 
@@ -166,6 +165,9 @@ li {
 .add-field-button, .create-list-button {
   padding: 6px 12px;
   width: auto;
+}
+.close-form {
+  align-self: flex-end;
 }
 
 

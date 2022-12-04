@@ -3,7 +3,7 @@ import DispatchContext from "./DispatchContext";
 import { FaTrashAlt } from "react-icons/fa";
 import ModalMessage from "./ModalMessage";
 
-const EditForm = ({ listIndex }) => {
+const EditList = ({ listIndex }) => {
   const dispatch = useContext(DispatchContext)
 
   const [userInput, setUserInput] = useState('');
@@ -49,11 +49,10 @@ const EditForm = ({ listIndex }) => {
     catch(error) {
       throw new Error(`Error occured - ${error}`)
     }
-    
   }
 
   return (
-    <form className="EditForm">
+    <form className="EditList">
       <input
         value={userInput}
         type='text'
@@ -79,4 +78,4 @@ const EditForm = ({ listIndex }) => {
   )
 }
 
-export default EditForm;
+export default EditList;
